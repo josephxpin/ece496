@@ -1,0 +1,167 @@
+<!-- 
+	Configulation of Raylaunching Solver
+	(c) 2020 Takahiro Hashimoto
+ -->
+
+<frequency>2.155e9</frequency>
+
+<!-- geometry -->
+	<is_free_space>false</is_free_space>
+	<geometry_filename>bahen_eighth_floor_2.stl</geometry_filename>
+	<num_material>3</num_material>
+	<!-- specify materials upto num_material > 0 -->
+
+	<material0> <!-- interior plasterboard -->
+		<!-- 0: none, 1: Fresnel, 2: slab, 4: from file -->
+		<reflection_type>2</reflection_type>
+		<transmission_type>2</transmission_type>
+		<!-- 0: complex permittivity, 1: static permittivity and conductivity -->
+		<epsilon_setting_mode>1</epsilon_setting_mode>
+		<complex_permittivity>
+			<real>9</real><imag>0.9</imag>
+		</complex_permittivity>
+		<static_permittivity>3.132</static_permittivity>
+		<conductivity>0.00004621</conductivity>
+		<is_impedance_boundary>false</is_impedance_boundary>
+		<thickness>0.03</thickness>
+		<is_diffuse_reflect>false</is_diffuse_reflect>
+		<is_diffuse_transmit>false</is_diffuse_transmit>
+		<!-- material0 is set to all faces by default -->
+	</material0>
+
+	<material1> <!-- glass -->
+		<!-- 0: none, 1: Fresnel, 2: slab, 4: from file -->
+		<reflection_type>2</reflection_type>
+		<transmission_type>2</transmission_type> <!-- reflection and transmission type are set to 2 (slab) -->
+		<!-- 0: complex permittivity, 1: static permittivity and conductivity -->
+		<epsilon_setting_mode>1</epsilon_setting_mode>
+		<complex_permittivity>
+			<real>9</real><imag>0.9</imag>
+		</complex_permittivity>
+		<static_permittivity>6.436</static_permittivity>
+		<conductivity>0.001</conductivity>
+		<is_impedance_boundary>false</is_impedance_boundary>
+		<thickness>0.045</thickness>
+		<is_diffuse_reflect>false</is_diffuse_reflect>
+		<is_diffuse_transmit>false</is_diffuse_transmit>
+		<face_index>8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 165, 283</face_index> <!-- specify face indices when material number > 0 -->
+	</material1>
+
+	<material2> <!-- concrete -->
+		<!-- 0: none, 1: Fresnel, 2: slab, 4: from file -->
+		<reflection_type>2</reflection_type>
+		<transmission_type>2</transmission_type> <!-- reflection and transmission type are set to 2 (slab) -->
+		<!-- 0: complex permittivity, 1: static permittivity and conductivity -->
+		<epsilon_setting_mode>1</epsilon_setting_mode>
+		<complex_permittivity>
+			<real>9</real><imag>0.9</imag>
+		</complex_permittivity>
+		<static_permittivity>3.380</static_permittivity>
+		<conductivity>0.0013</conductivity>
+		<is_impedance_boundary>false</is_impedance_boundary>
+		<thickness>0.31</thickness>
+		<is_diffuse_reflect>false</is_diffuse_reflect>
+		<is_diffuse_transmit>false</is_diffuse_transmit>
+		<face_index>193, 194, 195, 196, 197, 198, 199, 200, 205, 206, 217, 218, 316, 319, 320, 321, 322, 323, 324, 325, 327, 330, 331, 332, 333, 335, 336, 338, 340, 341, 343, 344, 346, 347, 348, 349, 350, 351, 353, 354, 355, 356, 357, 360, 361, 362, 363, 365, 366, 369, 370, 371, 373, 375, 376, 377, 378, 380, 381, 384, 385, 386, 387, 388, 389, 390, 391, 394, 397, 398, 399, 400, 401, 402, 404, 405, 406, 407, 408, 410, 411, 414, 417, 418, 419, 420, 421, 422, 423, 425, 426, 428, 429, 431, 432, 434, 436, 437, 438, 440, 441, 444, 447, 449, 450, 451, 452, 455, 457, 458, 459, 461, 464, 465, 466, 467, 468, 471, 473, 474, 475, 477, 478, 480, 481, 482, 485, 486, 487, 488, 489, 490, 491, 492, 493, 496</face_index> <!-- specify face indices when material number > 0 -->
+	</material2>  
+
+	<reflection_coef_filename></reflection_coef_filename>
+	<transmission_coef_filename></transmission_coef_filename>
+	<diffuse_reflection_filename></diffuse_reflection_filename>
+	<diffuse_transmission_filename></diffuse_transmission_filename>
+
+	<is_diffract_isolated_edges>false</is_diffract_isolated_edges>
+
+<!-- source -->
+	<source_position> <x>-1.80855e+01</x> <y>2.47484e+01</y> <z>2.75e+00</z> </source_position>
+	<transmitting_power_dBm>15</transmitting_power_dBm>
+	<tx_antenna_pattern_file>HalfLengthDipole.dat</tx_antenna_pattern_file>
+	<tx_axis> 
+		<zx>0.0</zx> <zy>0.0</zy> <zz>1.0</zz>
+		<xx>1.0</xx> <xy>0.0</xy> <xz>0.0</xz>
+	</tx_axis>
+
+<!-- launching -->
+	<!-- 0: single ray (debug),     1: uniform rays,
+	     2: uniform theta-phi rays, 3: non-uniform theta-phi rays-->
+	<ray_launch_mode>1</ray_launch_mode>
+	<!-- # of rays: 10*nt^2+2. Ray interval: 360/5/nt deg (approx.) -->
+	<num_tesselate>101</num_tesselate>
+	<num_tesselate_scat>10</num_tesselate_scat>
+	<!-- # of rays: (ntheta-2)*nphi+2. Ray interval: 180/(ntheta-1), 360/nphi deg-->
+	<num_theta>200</num_theta>
+	<num_phi>50</num_phi>
+	<theta_phi_launch_zaxis> <x>1.0</x> <y>0.0</y> <z>0.0</z> </theta_phi_launch_zaxis>
+	<theta_phi_launch_xaxis> <x>0.0</x> <y>1.0</y> <z>0.0</z> </theta_phi_launch_xaxis>
+
+	<!-- filtering by axis and angle -->
+	<is_filter_rays_by_theta_angle>false</is_filter_rays_by_theta_angle>
+	<is_filter_rays_by_phi_angle>false</is_filter_rays_by_phi_angle>
+	<launch_angle_theta_start_deg>0</launch_angle_theta_start_deg>
+	<launch_angle_theta_end_deg>90</launch_angle_theta_end_deg>
+	<launch_angle_phi_start_deg></launch_angle_phi_start_deg>
+	<launch_angle_phi_end_deg></launch_angle_phi_end_deg>
+	<launch_filter_zaxis> <x>1.0</x> <y>0.0</y> <z>0.0</z> </launch_filter_zaxis>
+	<launch_filter_xaxis> <x>0.0</x> <y>1.0</y> <z>0.0</z> </launch_filter_xaxis>
+
+	<!-- debug -->
+	<is_filter_rays_by_launch_id>false</is_filter_rays_by_launch_id>
+	<ray_id_to_launch></ray_id_to_launch>
+
+	<!--single_launch>
+		<dir0> <x>0.5</x> <y>-0.86603</y> <z>-0.1</z> </dir0>
+		<dir1> <x>0.5</x> <y>-0.86603</y> <z> 0.1</z> </dir1>
+		<dir2> <x>0.4</x> <y>-0.86603</y> <z> 0.0</z> </dir2>
+	</single_launch> -->
+
+<!-- tracing -->
+	<num_reflection_max>1</num_reflection_max>
+	<num_transmission_max>1</num_transmission_max>
+	<num_diffraction_max>1</num_diffraction_max>
+	<num_diffuse_reflection_max>0</num_diffuse_reflection_max>
+	<num_diffuse_transmission_max>0</num_diffuse_transmission_max>
+	<num_ray_diffraction>10</num_ray_diffraction>
+	<is_restrict_diffracting_edge>false</is_restrict_diffracting_edge>
+	<diffracting_edge_index>1,13,18,19,23,27,30,32,34,37,41,44,46,50,55,60,64,65,68,72,78,82,86,89,93,97,101,105,109,113,117,121,124,133,137,145,148,155,163,168,184,186,192,200,222,232,237,239,244,262,269,278,283,290,293,297,302,304,311,317,345,352,358,361,364,366,369,371,393,395,405,417,420,427,432,440,453,458,461,464,473,493,543,545,578,603,608,624</diffracting_edge_index>
+	<tracing_field_threshold>0.0001</tracing_field_threshold>
+	<diffuse_reflection_field_threshold>0.001</diffuse_reflection_field_threshold>
+	<diffuse_transmission_field_threshold>0.001</diffuse_transmission_field_threshold>
+
+<!-- captureing -->
+	<!-- 0: position, 1: position and axis -->
+	<receiver_position_load_type>0</receiver_position_load_type>
+	<receiver_position_filename>ReceiverPositions.dat</receiver_position_filename>
+	<is_limit_receivers>false</is_limit_receivers>
+	<rx_antenna_pattern_file>HalfLengthDipole.dat</rx_antenna_pattern_file>
+	<rx_axis> 
+		<zx>0.0</zx> <zy>0.0</zy> <zz>1.0</zz>
+		<xx>1.0</xx> <xy>0.0</xy> <xz>0.0</xz>
+	</rx_axis>
+
+	<!-- filtering -->
+	<is_filter_nan_rays>true</is_filter_nan_rays>
+	<is_filter_direct_rays>false</is_filter_direct_rays>
+	<is_filter_low_power_rays>false</is_filter_low_power_rays>
+	<power_truncation_threshold>30</power_truncation_threshold>
+	<is_remove_duplicate_rays>true</is_remove_duplicate_rays>
+
+<!-- output -->
+	<!-- CSV -->
+	<is_save_receivers_csv>true</is_save_receivers_csv>
+	<is_save_electric_field_csv>false</is_save_electric_field_csv>
+	<is_save_electric_field_matlab_csv>false</is_save_electric_field_matlab_csv>
+
+	<!-- VTK (for visualization) -->
+	<is_save_facemodel_vtk>true</is_save_facemodel_vtk>
+	<is_save_edgemodel_vtk>true</is_save_edgemodel_vtk>
+	<is_save_transmitter_vtk>true</is_save_transmitter_vtk>
+	<is_save_tessellated_icosahedron_vtk>false</is_save_tessellated_icosahedron_vtk>
+	<is_save_raytube_vtk>false</is_save_raytube_vtk>
+	<is_save_receivers_vtk>true</is_save_receivers_vtk>
+	<is_save_raypath_vtk>false</is_save_raypath_vtk>
+	<vtk_length_max>10.0</vtk_length_max>
+	
+<!-- system -->
+	<!-- 0: set maximum cpus -->
+	<num_openmp_cpus>1</num_openmp_cpus>
+	<num_log_interval>25</num_log_interval>
